@@ -1,23 +1,24 @@
 //
-//  main.c
+//  wav.c
 //  FAS Modulation
 //
-//  Created by Raphael A V Borges on 25/03/18.
+//  Created by Raphael A V Borges on 04/05/18.
 //  Copyright © 2018 Raphael A V Borges. All rights reserved.
 //
 
 #include <stdio.h>
+#include <stdio.h>
 #include "wav.h"
-#include "Audio.h"
 
 
 
 
-int main(int argc, const char * argv[]) {
+void printwavinfo(char *file_name) {
+    ///Users/SpyroGyra/Documents/UFMG/TCC/FAS Modulation/FAS Modulation/Oboe_B3.wav
     
     //read Audio sample
     int16_t *samples = NULL;
-    wavread("/Users/SpyroGyra/Documents/UFMG/TCC/FAS Modulation/FAS Modulation/Oboe_B3.wav", &samples);
+    wavread(file_name, &samples);
     printf("No. of channels: %d\n",     header->num_channels);
     printf("Sample rate:     %d\n",     header->sample_rate);
     printf("Bit rate:        %dkbps\n", header->byte_rate*8 / 1000);
@@ -25,7 +26,7 @@ int main(int argc, const char * argv[]) {
     printf("Sample 0:        %d\n", samples[0]);
     printf("Sample 1:        %d\n", samples[1]);
     // Modify the header values & samples before writing the new file
-    wavwrite("/Users/SpyroGyra/Documents/UFMG/TCC/FAS Modulation/FAS Modulation/track2.wav", samples);
+    wavwrite(file_name, samples);
     free(header);
     free(samples);
     
@@ -51,7 +52,7 @@ int main(int argc, const char * argv[]) {
     
     //USAR PORT AUDIO!!!!
     //USAR SDL PARA VIZUALIZAR
-   // http://www.mega-nerd.com/libsndfile/api.html
+    // http://www.mega-nerd.com/libsndfile/api.html
     //https://www.sfml-dev.org/tutorials/2.4/start-osx.php
-
+    
 }
